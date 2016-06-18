@@ -23,14 +23,17 @@
 		die('Unable to retrieve data from table');
 	}
 
-	//Incase the order of AUTO_INCREMENT is off when loaded
-	mysql_query("SET @count = 0");
-	mysql_query("UPDATE Users SET U_ID = @count:= @count + 1");
-
-	$management_sql = array("delete"=>"DELETE FROM Users WHERE Username='".$_POST['delete-input']."'");
+	$management_sql = array(
+		"delete"=>"DELETE FROM Users WHERE Username='{$_POST['delete-input']}'"
+		// add update function here
+	);
 	
-	if (isset($_POST["delete-submit"])) {
+	if (isset($_POST["delete-submit"]) && $_POST["delete-input"] != 'admin') {
 		mysql_query($management_sql["delete"]);
+	
+		//Incase the order of AUTO_INCREMENT is off when loaded
+        	mysql_query("SET @count = 0");
+        	mysql_query("UPDATE Users SET U_ID = @count:= @count + 1");
 	}	
 ?>
 
@@ -82,7 +85,7 @@
 				</div>                                                                                                          	
 				<div class="form-group">
 					<div class="col-sm-10 col-sm-offset-1 text-center">
-						<input id="delete-submit" name="delete-submit" type="submit" value="DELETE" class="btn btn-danger btn-lg text-center">
+						<input id="delete-submit" name="delete-submit" type="submit" value="DELETE" onClick="history.go(0)" class="btn btn-danger btn-lg">
 					</div>
 				</div>
 			</div>

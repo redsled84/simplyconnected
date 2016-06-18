@@ -74,6 +74,16 @@
     max-height: 0;
 }
 
+#delete-input {
+	float: left !important;
+	margin-right: -100rem !important;
+}
+
+#delete-submit {
+	float: right !important;
+}
+
+
 .user-list {
 	padding-left: 15%;
 	padding-right: 15%;
