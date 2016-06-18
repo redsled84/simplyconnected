@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+	border-color: transparent !important;
+	background-color: #162D40 !important;
+	display: block !important;
+}
+
+.navbar-header {
+	padding-left: 3%;
+}
+
+.navbar-brand {
+	font-size: 36px !important;
+	color: #FFD000 !important;
+	transform: translateY(50%);
+}
+
+.navbar-brand:hover {
+	color: #CAA400 !important;
+}
+
+.navbar-nav {
+	padding-right: 3%;
+}
+
+.navbar-nav > li > a {
+	font-size: 24px !important;
+	color: #FF8B02 !important;
+	padding-top: 4rem !important;
+	padding-bottom: 4rem !important;
+}
+
+.navbar-nav > li > a:hover {
+	color: #FFC682 !important;
+	background-color: #2C597F !important;
+}
+
+.jumbotron {
+	padding-right: 5% !important;
+	padding-left: 5% !important;
+	border-radius: 0 !important;
+}
+
+hr {
+	height: 2px !important;
+	background-color: #333 !important;
+}
+
+.tab-content {
+	max-width: 50%;
+	transform: translateX(50%);
+}
+
+.form-group label, h2 {
+	color: #33 !important;
+}
+
+.form-group label {
+	font-size: 16px !important;
+}
+
+.form-group input {
+	font-size: 16px !important;
+	border-radius: 0;
+}
+
+.btn {
+	padding-left: 4rem;	
+	padding-right: 4rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	border-radius: 0;
+	border-color: transparent;
+	background-color: #162D40;
+	color: #FF8B02;
+}
+
+.btn:hover {
+	background-color: #2C597F;
+	color: #FFC682;
+}
+
+.register-container {
+	transform: translateX(-10%);
+}

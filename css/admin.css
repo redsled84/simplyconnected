@@ -1,0 +1,80 @@
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+	border-color: transparent !important;
+	background-color: #162D40 !important;
+	display: block !important;
+	margin-bottom: 0 !important;
+}
+
+.navbar-header {
+	padding-left: 3%;
+	position: relative;
+}
+
+.navbar-brand {
+	font-size: 36px !important;
+	color: #FFD000 !important;
+	transform: translateY(50%);
+}
+
+.navbar-nav {
+	padding-right: 3%;
+}
+
+.navbar-nav > li > a {
+	font-size: 24px !important;
+	color: #FF8B02 !important;
+	padding-top: 4rem !important;
+	padding-bottom: 4rem !important;
+	padding-right: 3rem;
+	padding-left: 3rem;
+	margin-top: -1.6rem;
+	margin-bottom: -1.6rem;
+}
+
+.navbar-nav > li > a:hover {
+	color: #FFC682 !important;
+	background-color: #2C597F !important;
+}
+
+.fa-cog {
+	cursor: pointer;
+}
+
+.management {
+	margin: 0;
+	height: 30rem;
+	background-color: #777 !important;
+}
+
+.management.ng-enter, .management.ng-leave {
+	-webkit-transition: .4s ease-in-out all;
+	-moz-transition: .4s ease-in-out all;
+	-ms-transition: .4s ease-in-out all;
+	-o-transition: .4s ease-in-out all;
+	transition: .4s ease-in-out all;
+}
+
+.management.ng-enter {
+    max-height: 0;
+}
+
+.management.ng-enter.ng-enter-active {
+    max-height: 30rem;
+}
+
+.management.ng-leave {
+    max-height: 30rem;
+}
+
+.management.ng-leave.ng-leave-active {
+    max-height: 0;
+}
+
+.user-list {
+	padding-left: 15%;
+	padding-right: 15%;
+}
