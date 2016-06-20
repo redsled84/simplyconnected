@@ -45,46 +45,81 @@
 }
 
 .management {
-	margin: 0;
+	margin: 0 !important;
+	padding: 0 !important;
 	height: 30rem;
 	background-color: #777 !important;
 }
 
-.management.ng-enter, .management.ng-leave {
-	-webkit-transition: .4s ease-in-out all;
-	-moz-transition: .4s ease-in-out all;
-	-ms-transition: .4s ease-in-out all;
-	-o-transition: .4s ease-in-out all;
-	transition: .4s ease-in-out all;
+.management.ng-enter:not(.form-horizontal), .management.ng-leave:not(.form-horizontal) {
+	-webkit-transition: .8s ease-in-out all;
+	-moz-transition: .8s ease-in-out all;
+	-ms-transition: .8s ease-in-out all;
+	-o-transition: .8s ease-in-out all;
+	transition: .8s ease-in-out all;
 }
 
 .management.ng-enter {
-    max-height: 0;
+	max-height: 0;
 }
 
 .management.ng-enter.ng-enter-active {
-    max-height: 30rem;
+	max-height: 30rem;
 }
 
 .management.ng-leave {
-    max-height: 30rem;
+	max-height: 30rem;
 }
 
 .management.ng-leave.ng-leave-active {
-    max-height: 0;
+	max-height: 0;	
 }
 
-#delete-input {
-	float: left !important;
-	margin-right: -100rem !important;
+/* Transitions for the children */
+
+.management.ng-enter .form-horizontal, .management.ng-leave .form-horizontal {
+	-webkit-transition: .6s cubic-bezier(1,.01,.65,1) opacity;
+	-moz-transition: .6s cubic-bezier(1,.01,.65,1) opacity;
+	-ms-transition: .6s cubic-bezier(1,.01,.65,1) opacity;
+	-o-transition: .6s cubic-bezier(1,.01,.65,1) opacity;
+	transition: .6s cubic-bezier(1,.01,.65,1) opacity;
 }
 
-#delete-submit {
-	float: right !important;
+.management.ng-enter .form-horizontal {
+	opacity: 0;
 }
 
+.management.ng-enter.ng-enter-active .form-horizontal {
+	opacity: 1;
+}
+
+.management.ng-leave .form-horizontal {
+	opacity: 1;
+}
+
+.management.ng-leave.ng-leave-active .form-horizontal {
+	opacity: 0;	
+}
+
+.form-delete {
+	transform: translateY(250%);
+}
+
+.form-update {
+	transform: translateY(400%);
+}
 
 .user-list {
 	padding-left: 15%;
 	padding-right: 15%;
+}
+
+.user-list h2 {
+	position: fixed;
+}
+
+.table {
+	margin-top: 10rem;
+	width: 70%;
+	position: absolute;
 }

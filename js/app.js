@@ -1,5 +1,6 @@
 var showApp = angular.module('showApp', ['ngAnimate'])
 
 .controller('mainController', function($scope) {
-	$scope.show = false;
+	$scope.managementShow = false;
+	$scope.formShow = false;
 });

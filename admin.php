@@ -24,9 +24,12 @@
 	}
 
 	$management_sql = array(
-		"delete"=>"DELETE FROM Users WHERE Username='{$_POST['delete-input']}'"
+		"delete"=>"DELETE FROM Users WHERE Username='{$_POST['delete-input']}'",
+		"update"=>"UPDATE Users SET {$_POST['update-column']}='{$_POST['update-input']}' WHERE Username='{$_POST['update-name']}'"
 		// add update function here
 	);
+
+	$update = true;
 	
 	if (isset($_POST["delete-submit"]) && $_POST["delete-input"] != 'admin') {
 		mysql_query($management_sql["delete"]);
@@ -34,7 +37,16 @@
 		//Incase the order of AUTO_INCREMENT is off when loaded
         	mysql_query("SET @count = 0");
         	mysql_query("UPDATE Users SET U_ID = @count:= @count + 1");
-	}	
+	} elseif (isset($_POST["update-submit"])) {
+		for ($index = 0; $index < sizeof($users); $index++) {
+			if ($users[index] == $_POST['update-name']) {
+				$update = false;
+			}		
+		}
+		if ($update == true) {
+			mysql_query($management_sql["update"]);		
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -68,25 +80,38 @@
 					<ul class='nav navbar-nav navbar-right navbar-text'>
 						<li><a href="index.php">Home</a></li>
 						<li><a href="login.php">Login</a></li>
-						<li><a class='fa fa-cog' ng-click='show = !show'></a></li>
+						<li><a class='fa fa-cog' ng-click='formShow = !formShow; managementShow = !managementShow;'></a></li>
 					</ul>
 				</div>
 			</div>
 
 		</div>
 		
-		<div class="management" ng-if="show" ng-show="show">
+		<div class="management" ng-if="managementShow" ng-show="managementShow">
 			<form class="form-horizontal" role="form" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-				<div class="form-group">
-					<label for="delete-input" class="col-sm-2 control-label">Delete a user</label>
-					<div class="col-sm-10">
+				<div class="form-delete row pagination-centered">
+					<label for="delete-input" class="col-sm-3 control-label">Delete a user</label>
+					<div class="col-sm-6">
 						<input type="text" class="form-control" id="delete-input" name="delete-input" placeholder="Username" value="">
+					</div>                                                                                                    	
+					<div class="col-sm-3">
+						<input type="submit" class="btn btn-danger" id="delete-submit" name="delete-submit" value="DELETE" onClick="history.go(0)">
 					</div>
-				</div>                                                                                                          	
-				<div class="form-group">
-					<div class="col-sm-10 col-sm-offset-1 text-center">
-						<input id="delete-submit" name="delete-submit" type="submit" value="DELETE" onClick="history.go(0)" class="btn btn-danger btn-lg">
+				</div>
+				<div class="form-update row pagination-centered">
+                                	<label for="update-input" class="col-sm-1 control-label">Update a user</label>
+                                	<div class="col-sm-2">
+						<input type="text" class="form-control" id="update-name" name="update-name" placeholder="Username" value="">
 					</div>
+					<div class="col-sm-3">						
+						<input type="text" class="form-control" id="update-column" name="update-column" placeholder="Column name" value="">
+					</div>                                                                                                    	
+					<div class="col-sm-4">						
+						<input type="text" class="form-control" id="update-input" name="update-input" placeholder="New value" value="">
+					</div>                                                                                                    	
+                                	<div class="col-sm-2">
+                                		<input type="submit" class="btn btn-success" id="update-submit" name="update-submit" value="UPDATE" onClick="history.go(0)">
+                                	</div>
 				</div>
 			</div>
 		</div>
@@ -95,7 +120,7 @@
 			<br>
 			<h2>SimplyConnected User List</h2>
 			<br>
-			<table class="table table-hover">
+			<table class="table table-hover pull-right">
 				<thead>
 				  	<tr>
 						<th>User ID</th>						
